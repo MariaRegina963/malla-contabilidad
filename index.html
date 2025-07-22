@@ -442,6 +442,102 @@ h1 {
   position: relative;
   box-sizing: border-box;
 }
+
+body {
+  background: #f3f3f3;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 1rem;
+}
+h1 {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  color: #111;
+}
+.malla-header {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 0.2rem;
+  font-size: 0.85rem;
+  color: #111;
+}
+.malla-header__anio {
+  grid-column: span 2;
+}
+.malla-ciclos {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  text-align: center;
+  font-size: 0.75rem;
+  margin-bottom: 0.3rem;
+  color: #222;
+}
+.ciclo-label {
+  padding: 2px 0;
+}
+.malla-container {
+  display: grid !important;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 1px;
+  padding: 0;
+  background: #dcdcdc;
+}
+.curso {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  padding: 3px;
+  font-size: 0.63rem;
+  border: 1px solid #aaa;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  flex-direction: column;
+  position: relative;
+  background: white;
+  box-sizing: border-box;
+}
+
+/* Colores por estado */
+.curso.activo {
+  background: #ffc4e0 !important;
+  color: #5a0031 !important;
+  border: 1px solid #f58bc3;
+}
+.curso.tachado {
+  background: #d5c2ff !important;
+  color: #3e2a66 !important;
+  border: 1px solid #b190ff;
+}
+.curso.inactivo,
+.curso.pendiente {
+  background: #cfe8ff !important;
+  color: #215073 !important;
+  border: 1px solid #94c9f3;
+}
+.curso.inactivo {
+  cursor: not-allowed;
+}
+
+/* Línea diagonal */
+.curso.tachado::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0,0,0,0.5) 1px, transparent 1px);
+  background-size: 100% 100%;
+  pointer-events: none;
+  border-radius: 2px;
+}
 </style>
 </head>
 <body>

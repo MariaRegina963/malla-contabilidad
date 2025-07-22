@@ -1,0 +1,622 @@
+
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Malla Contabilidad 2022</title>
+<style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 1rem;
+      background: #f7f7f7;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .malla-container {
+      display: flex;
+      overflow-x: auto;
+      gap: 2rem;
+      padding-bottom: 2rem;
+    }
+    .ciclo {
+      min-width: 260px;
+      background: #ffffff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 1rem;
+      flex-shrink: 0;
+    }
+    .ciclo h2 {
+      font-size: 1.2rem;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    .curso {
+      margin-bottom: 0.5rem;
+      padding: 0.6rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .curso.tachado {
+
+      text-decoration: line-through;
+      opacity: 0.6;
+    
+      background: #E4D4F8;
+      color: #4B2F63;
+    }
+    .curso.inactivo {
+      background: #ddd;
+      color: #999;
+      cursor: not-allowed;
+    }
+    .curso.activo {
+
+    
+      background: #FAD4E6;
+      color: #6B294E;
+    }
+    .curso.pendiente {
+
+    
+      background: #D4ECFA;
+      color: #2F4B63;
+    }
+  
+/* --- Overrides pastel palette 2025-07-18 --- */
+body {
+  background: #FFF9D6; /* amarillo pastel */
+}
+
+.curso.pendiente {
+  background: #D6EEFF !important; /* celeste pastel más notorio */
+  color: #2F4B63 !important;
+  border: 1px solid #9BC9E6;
+}
+
+.curso.activo {
+  background: #FAD4E6 !important;
+  color: #6B294E !important;
+  border: 1px solid #E8AFC7;
+}
+
+.curso.tachado {
+  background: #E4D4F8 !important;
+  color: #4B2F63 !important;
+  border: 1px solid #C1B0E0;
+}
+
+
+    .malla-container {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      gap: 0.5rem;
+      padding-bottom: 2rem;
+    }
+    .ciclo {
+      background: #ffffff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 0.5rem;
+    }
+    .ciclo h2 {
+      display: none;
+    }
+    .curso {
+      aspect-ratio: 1 / 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 0.8rem;
+    }
+    
+    .malla-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      gap: 0.4rem;
+      padding-bottom: 2rem;
+    }
+    .curso {
+      aspect-ratio: 1 / 1;
+      font-size: 0.6rem;
+      padding: 0.2rem;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      line-height: 1.1;
+    }
+    
+body {
+  padding: 0.5rem;
+  font-size: 10px;
+}
+
+.malla-container {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 2px;
+  padding-bottom: 0;
+  overflow: hidden;
+}
+
+.curso {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  font-size: 0.55rem;
+  padding: 1px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.1;
+  word-break: break-word;
+}
+
+.curso.tachado {
+  text-decoration: line-through;
+  opacity: 0.85;
+}
+
+body {
+  padding: 0.5rem;
+  font-size: 14px; /* tamaño original de fuente */
+}
+
+.malla-container {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 3px;
+  padding-bottom: 0;
+  overflow: hidden;
+}
+
+.curso {
+  width: 100%;
+  height: 55px;
+  padding: 3px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.1;
+  word-break: break-word;
+  font-size: 0.7rem;
+}
+
+.malla-container {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 4px;
+  padding-bottom: 0;
+  overflow: hidden;
+}
+
+.curso {
+  width: 100%;
+  height: 70px;
+  padding: 5px;
+  font-size: 0.75rem;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.1;
+  word-break: break-word;
+  white-space: normal;
+  overflow-wrap: break-word;
+  flex-direction: column;
+}
+
+.malla-container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr); /* aumentar el número de columnas para cuadros más estrechos */
+  gap: 4px;
+  padding-bottom: 0;
+  overflow: hidden;
+}
+
+.curso {
+  width: 100%;
+  height: 80px;
+  padding: 5px;
+  font-size: 0.75rem;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.1;
+  word-break: break-word;
+  white-space: normal;
+  overflow-wrap: break-word;
+  flex-direction: column;
+}
+
+.malla-container {
+  display: grid;
+  grid-template-columns: repeat(20, 1fr); /* más columnas para cuadros más angostos */
+  gap: 4px;
+  padding-bottom: 0;
+  overflow: hidden;
+}
+
+.curso {
+  width: 100%;
+  height: 80px;
+  padding: 4px;
+  font-size: 0.75rem;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.1;
+  word-break: break-word;
+  white-space: normal;
+  overflow-wrap: break-word;
+  flex-direction: column;
+}
+
+.malla-header {
+  display: grid;
+  grid-template-columns: repeat(5, 2fr);
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+  font-size: 0.9rem;
+}
+.malla-header__anio {
+  grid-column: span 2;
+}
+.malla-ciclos {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  text-align: center;
+  font-size: 0.8rem;
+  margin-bottom: 0.4rem;
+}
+.ciclo-label {
+  padding: 2px 0;
+}
+
+.malla-container {
+  display: grid !important;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 4px;
+  padding-bottom: 0;
+  overflow: hidden;
+}
+.curso {
+  width: 100%;
+  height: 80px;
+  padding: 4px;
+  font-size: 0.75rem;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.1;
+  word-break: break-word;
+  white-space: normal;
+  overflow-wrap: break-word;
+  flex-direction: column;
+  position: relative;
+}
+.curso.tachado::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(135deg, transparent, transparent 6px, rgba(0,0,0,0.4) 6px, rgba(0,0,0,0.4) 8px);
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+body {
+  background: white;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 1rem;
+}
+h1 {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+}
+.malla-header {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+.malla-header__anio {
+  grid-column: span 2;
+}
+.malla-ciclos {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  text-align: center;
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+.ciclo-label {
+  padding: 2px 0;
+}
+.malla-container {
+  display: grid !important;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 2px;
+  padding-bottom: 0;
+}
+.curso {
+  width: 100%;
+  height: 64px;
+  padding: 3px;
+  font-size: 0.68rem;
+  border-radius: 2px;
+  border: 1px solid #bbb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.1;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  flex-direction: column;
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* Estilos por estado */
+.curso.activo {
+  background: #ffc4e0 !important;
+  color: #5a0031 !important;
+  border: 1px solid #f58bc3;
+}
+.curso.tachado {
+  background: #d5c2ff !important;
+  color: #3e2a66 !important;
+  border: 1px solid #b190ff;
+  text-decoration: none;
+}
+.curso.inactivo,
+.curso.pendiente {
+  background: #cfe8ff !important;
+  color: #215073 !important;
+  border: 1px solid #94c9f3;
+}
+.curso.inactivo {
+  cursor: not-allowed;
+}
+.curso.tachado::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(135deg, transparent, transparent 6px, rgba(0,0,0,0.25) 6px, rgba(0,0,0,0.25) 8px);
+  border-radius: 2px;
+  pointer-events: none;
+}
+</style>
+</head>
+<body>
+<h1>Malla Contabilidad 2022</h1>
+<div class="malla-header">
+<div class="malla-header__anio">Año 1</div>
+<div class="malla-header__anio">Año 2</div>
+<div class="malla-header__anio">Año 3</div>
+<div class="malla-header__anio">Año 4</div>
+<div class="malla-header__anio">Año 5</div>
+</div>
+<div class="malla-ciclos">
+<div class="ciclo-label">I</div><div class="ciclo-label">II</div>
+<div class="ciclo-label">III</div><div class="ciclo-label">IV</div>
+<div class="ciclo-label">V</div><div class="ciclo-label">VI</div>
+<div class="ciclo-label">VII</div><div class="ciclo-label">VIII</div>
+<div class="ciclo-label">IX</div><div class="ciclo-label">X</div>
+</div>
+
+<div class="malla-container" id="malla"></div>
+<script>
+    const cursos = {
+  "111142": { nombre: "Lenguaje I", ciclo: 1, prereq: [] },
+  "111143": { nombre: "Métodos de Estudio Universitario", ciclo: 1, prereq: [] },
+  "111144": { nombre: "Filosofía y Ética", ciclo: 1, prereq: [] },
+  "111145": { nombre: "Historia del Perú en el Contexto Mundial Contemporáneo", ciclo: 1, prereq: [] },
+  "111146": { nombre: "Matemática I", ciclo: 1, prereq: [] },
+  "111147": { nombre: "Doctrina Contable", ciclo: 1, prereq: [] },
+  "111148": { nombre: "Inglés I", ciclo: 1, prereq: [] },
+  "111149": { nombre: "Desarrollo Personal", ciclo: 1, prereq: [] },
+  "111150": { nombre: "Responsabilidad Social Universitaria", ciclo: 1, prereq: [] },
+  "111242": { nombre: "Lenguaje II", ciclo: 2, prereq: ["111142"] },
+  "111243": { nombre: "Investigación Académica", ciclo: 2, prereq: ["111143"] },
+  "111244": { nombre: "Realidad Nacional y Mundial", ciclo: 2, prereq: [] },
+  "111245": { nombre: "Derechos Fundamentales", ciclo: 2, prereq: [] },
+  "111246": { nombre: "Matemática II", ciclo: 2, prereq: ["111146"] },
+  "111247": { nombre: "Introducción a la Contabilidad", ciclo: 2, prereq: ["111147"] },
+  "111248": { nombre: "Inglés II", ciclo: 2, prereq: ["111148"] },
+  "111249": { nombre: "Emprendimiento e Innovación", ciclo: 2, prereq: [] },
+  "111250": { nombre: "Ética Pública e Integridad Institucional", ciclo: 2, prereq: [] },
+  "111349": { nombre: "Fundamentos Prácticos de Contabilidad y Costos", ciclo: 3, prereq: ["111247"] },
+  "111350": { nombre: "Matemática Financiera", ciclo: 3, prereq: ["111246"] },
+  "111351": { nombre: "Estadística Descriptiva y Probabilidades", ciclo: 3, prereq: [] },
+  "111352": { nombre: "Economía General", ciclo: 3, prereq: ["111244"] },
+  "111353": { nombre: "Administración General I", ciclo: 3, prereq: [] },
+  "111354": { nombre: "Derecho Constitucional y Civil", ciclo: 3, prereq: ["111245"] },
+  "111355": { nombre: "Derecho Tributario", ciclo: 3, prereq: [] },
+  "111449": { nombre: "Contabilidad Financiera I", ciclo: 4, prereq: ["111349"] },
+  "111450": { nombre: "Fundamentos de Finanzas", ciclo: 4, prereq: ["111350"] },
+  "111451": { nombre: "Estadística Inferencial", ciclo: 4, prereq: ["111351"] },
+  "111452": { nombre: "Microeconomía", ciclo: 4, prereq: ["111352"] },
+  "111453": { nombre: "Administración General II", ciclo: 4, prereq: ["111353"] },
+  "111454": { nombre: "Derecho Empresarial", ciclo: 4, prereq: ["111354"] },
+  "111455": { nombre: "Tributos I", ciclo: 4, prereq: ["111355"] },
+  "111549": { nombre: "Contabilidad Financiera II", ciclo: 5, prereq: ["111449"] },
+  "111550": { nombre: "Gestión y Control Financiero", ciclo: 5, prereq: ["111450"] },
+  "111551": { nombre: "Presupuesto del Sector Público", ciclo: 5, prereq: [] },
+  "111552": { nombre: "Macroeconomía", ciclo: 5, prereq: ["111452"] },
+  "111553": { nombre: "Contabilidad de Costos I", ciclo: 5, prereq: ["111449"] },
+  "111554": { nombre: "Derecho Laboral", ciclo: 5, prereq: ["111454"] },
+  "111555": { nombre: "Tributos II", ciclo: 5, prereq: ["111455"] },
+  "111649": { nombre: "Contabilidad Superior y de Sociedades", ciclo: 6, prereq: ["111549"] },
+  "111650": { nombre: "Análisis e Interpretación de Información Financiera", ciclo: 6, prereq: ["111550"] },
+  "111651": { nombre: "Normas Contables del Sector Público", ciclo: 6, prereq: ["111551"] },
+  "111652": { nombre: "Control Interno y Gestión de Riesgos", ciclo: 6, prereq: ["111550"] },
+  "111653": { nombre: "Contabilidad de Costos II", ciclo: 6, prereq: ["111553"] },
+  "111654": { nombre: "Auditoría Financiera I", ciclo: 6, prereq: ["111549"] },
+  "111655": { nombre: "Informática Contable", ciclo: 6, prereq: [] },
+  "111791": { nombre: "Auditoría Financiera II", ciclo: 7, prereq: ["111654"] },
+  "111792": { nombre: "Finanzas Corporativas", ciclo: 7, prereq: ["111650"] },
+  "111793": { nombre: "Metodología de la Investigación Científica", ciclo: 7, prereq: [] },
+  "111794": { nombre: "Contabilidad del Sector Público", ciclo: 7, prereq: ["111651"] },
+  "111795": { nombre: "Gestión Estratégica de Costos", ciclo: 7, prereq: ["111653"] },
+  "111796": { nombre: "Tributación Aplicada", ciclo: 7, prereq: ["111555"] },
+  "111797": { nombre: "Sistema Nacional de Control", ciclo: 7, prereq: [] },
+  "111798": { nombre: "Contabilidad Sectorial", ciclo: 7, prereq: [] },
+  "111799": { nombre: "Sistema de Información Contable", ciclo: 7, prereq: [] },
+  "111891": { nombre: "Comercio Internacional y Legislación Aduanera", ciclo: 8, prereq: [] },
+  "111892": { nombre: "Auditoría del Sector Público", ciclo: 8, prereq: ["111791"] },
+  "111893": { nombre: "Trabajo de Investigación", ciclo: 8, prereq: ["111793"] },
+  "111894": { nombre: "Peritaje Contable", ciclo: 8, prereq: ["111791"] },
+  "111895": { nombre: "Proyectos de Inversión", ciclo: 8, prereq: ["111792"] },
+  "111896": { nombre: "Auditoría Tributaria", ciclo: 8, prereq: ["111796"] },
+  "111897": { nombre: "Mercado de Valores", ciclo: 8, prereq: [] },
+  "111898": { nombre: "Toma de Decisiones en Diversos Escenarios", ciclo: 8, prereq: [] },
+  "111899": { nombre: "Emprendimiento de Negocios Sostenibles", ciclo: 8, prereq: [] },
+  "111989": { nombre: "Seminario de Normas de Información Financiera", ciclo: 9, prereq: [] },
+  "111990": { nombre: "Taller de Integración Contable", ciclo: 9, prereq: [] },
+  "111991": { nombre: "Seminario de Gestión Contable y Ambiental", ciclo: 9, prereq: [] },
+  "111992": { nombre: "Seminario Taller de Plan de Tesis", ciclo: 9, prereq: ["111893"] },
+  "111993": { nombre: "Seminario de Finanzas", ciclo: 9, prereq: ["111895"] },
+  "111994": { nombre: "Gerencia Contable de Instituciones Financieras", ciclo: 9, prereq: [] },
+  "111995": { nombre: "Sistemas y Tecnologías de la Información", ciclo: 9, prereq: [] },
+  "111089": { nombre: "Contabilidad Internacional", ciclo: 10, prereq: ["111990"] },
+  "111090": { nombre: "Gestión y Control Estratégico", ciclo: 10, prereq: [] },
+  "111091": { nombre: "Ética en los Negocios", ciclo: 10, prereq: [] },
+  "111092": { nombre: "Seminario Taller de Tesis", ciclo: 10, prereq: ["111992"] },
+  "111093": { nombre: "Seminario de Finanzas Internacionales", ciclo: 10, prereq: ["111993"] },
+  "111094": { nombre: "NIIF's y su Implicancia Tributaria", ciclo: 10, prereq: ["111989"] },
+  "111095": { nombre: "Auditoría de Tecnologías de la Información", ciclo: 10, prereq: ["111995"] }
+};
+
+    const estado = JSON.parse(localStorage.getItem('estadoCursos2022') || '{}');
+
+    function cursosDependientesMarcados(codigo) {
+      return Object.entries(cursos).some(([cod, cur]) => {
+        return cur.prereq.includes(codigo) && estado[cod];
+      });
+    }
+
+    function toggleCurso(codigo) {
+      const completado = estado[codigo];
+      if (completado && cursosDependientesMarcados(codigo)) {
+        alert("No puedes desmarcar este curso porque hay cursos posteriores que dependen de él ya marcados.");
+        return;
+      }
+      if (completado === true) {
+        for (const [cod, cur] of Object.entries(cursos)) {
+          if (cur.prereq.includes(codigo)) {
+            delete estado[cod];
+          }
+        }
+      }
+      estado[codigo] = !completado;
+      localStorage.setItem('estadoCursos2022', JSON.stringify(estado));
+      renderMalla();
+    }
+
+    function renderMalla() {
+      const malla = document.getElementById('malla');
+      malla.innerHTML = '';
+      const ciclos = [...new Set(Object.values(cursos).map(c => c.ciclo))].sort((a, b) => a - b);
+      ciclos.forEach(ciclo => {
+        const divCiclo = document.createElement('div');
+        divCiclo.classList.add('ciclo');
+        const h2 = document.createElement('h2');
+        h2.textContent = `Ciclo ${ciclo}`;
+        divCiclo.appendChild(h2);
+        Object.entries(cursos).forEach(([codigo, curso]) => {
+          if (curso.ciclo === ciclo) {
+            const divCurso = document.createElement('div');
+            divCurso.textContent = `${codigo} - ${curso.nombre}`;
+            divCurso.classList.add('curso');
+            const completado = estado[codigo] === true;
+            const prereqCompletos = curso.prereq.every(p => estado[p]);
+
+            if (completado) {
+              divCurso.classList.add('tachado');
+              divCurso.onclick = () => toggleCurso(codigo);
+            } else if (curso.prereq.length === 0 || prereqCompletos) {
+              divCurso.classList.add('activo');
+              divCurso.onclick = () => toggleCurso(codigo);
+            } else {
+              const cursosAvanzadosCompletados = Object.entries(cursos)
+                .filter(([cod, cur]) => cur.prereq.includes(codigo) && estado[cod])
+                .length > 0;
+              if (cursosAvanzadosCompletados) {
+                divCurso.classList.add('pendiente');
+                divCurso.onclick = () => toggleCurso(codigo);
+              } else {
+                divCurso.classList.add('inactivo');
+              }
+            }
+
+            divCiclo.appendChild(divCurso);
+          }
+        });
+        malla.appendChild(divCiclo);
+      });
+    }
+
+    renderMalla();
+  </script>
+<style>
+/* ===== Overrides de colores (2025) =====
+   Pedido: 
+   - Rosado: cursos habilitados (activo)
+   - Morado: cursos marcados como hechos (tachado)
+   - Celeste: cursos aún no habilitados (inactivo y pendiente)
+*/
+.curso.activo {
+  background: #ffc4e0 !important; /* rosado suave */
+  color: #5a0031 !important;
+  border: 1px solid #f58bc3;
+}
+.curso.tachado {
+  background: #d5c2ff !important; /* morado claro */
+  color: #3e2a66 !important;
+  text-decoration: line-through;
+  opacity: 0.85;
+  border: 1px solid #b190ff;
+}
+.curso.inactivo,
+.curso.pendiente {
+  background: #cfe8ff !important; /* celeste */
+  color: #215073 !important;
+  border: 1px solid #94c9f3;
+}
+.curso.inactivo {
+  cursor: not-allowed;
+}
+</style>
+</body>
+</html>
